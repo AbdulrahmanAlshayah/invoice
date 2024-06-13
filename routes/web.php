@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\InvoiceArchiveController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -19,10 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/dashboard/user', function () {
     return view('Dashboard.User.dashboard');
 })->middleware(['auth'])->name('dashboard.user');
@@ -37,5 +35,25 @@ Route::post('/users/update', [UserController::class, 'updateUser'])->middleware(
 
 ############################################ End Profile #################################################
 
+############################## Start Invoices #####################################
+
+
+Route::get('/invoices', [InvoiceController::class, 'index'])->middleware(['auth', 'verified'])->name('invoices.index');
+Route::get('/invoices/add', [InvoiceController::class, 'add'])->middleware(['auth', 'verified'])->name('invoices.add');
+Route::get('/invoices/create', [InvoiceController::class, 'create'])->middleware(['auth', 'verified'])->name('invoices.create');
+Route::get('/invoices/{id}/edit', [InvoiceController::class, 'edit'])->middleware(['auth', 'verified'])->name('invoices.edit');
+Route::post('/invoices/store', [InvoiceController::class, 'store'])->middleware(['auth', 'verified'])->name('invoices.store');
+Route::post('/invoices/update', [InvoiceController::class, 'update'])->middleware(['auth', 'verified'])->name('invoices.update');
+Route::post('/invoices/destroy', [InvoiceController::class, 'destroy'])->middleware(['auth', 'verified'])->name('invoices.destroy');
+
+Route::get('Print_invoice/{id}', [InvoiceController::class, 'Print_invoice']);
+
+############################## End Invoices #####################################
+
+############################## Start Archive #####################################
+
+Route::resource('Archive', InvoiceArchiveController::class);
+
+############################## End Archive #####################################
 
 require __DIR__ . '/auth.php';

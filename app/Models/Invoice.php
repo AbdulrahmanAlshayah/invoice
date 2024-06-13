@@ -9,11 +9,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Invoice extends Model
 {
     use HasFactory, SoftDeletes;
-    use SoftDeletes;
     protected $fillable = [
         'invoice_Date',
         'customer_name',
+        'user_id',
+        'place',
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function details()
+    {
+        return $this->hasMany('App\Models\Invoices_details', 'id_Invoice');
+    }
 }

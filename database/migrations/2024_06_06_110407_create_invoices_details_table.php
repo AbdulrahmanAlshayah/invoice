@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('invoices_details', function (Blueprint $table) {
             $table->id();
-            $table->string('product', 50);
-            $table->integer('count');       // الكمية
-            $table->decimal('price', 8, 2);       // السعر
+            $table->string('product', 50)->nullable();
+            $table->integer('count')->nullable();       // الكمية
+            $table->decimal('price', 8, 2)->nullable();       // السعر
             $table->unsignedBigInteger('id_Invoice');
             $table->foreign('id_Invoice')->references('id')->on('invoices')->onDelete('cascade');
             $table->text('note')->nullable();

@@ -74,9 +74,7 @@
                                         @if ($user->user_type == 1)
                                             آدمن
                                         @elseif($user->user_type ==2)
-                                            بائع
-                                        @else
-                                        زبون
+                                            مستخدم
                                         @endif
                                     </td>
 

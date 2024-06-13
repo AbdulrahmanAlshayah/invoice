@@ -15,6 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->date('invoice_Date')->nullable();       //تاريخ الفاتورة
             $table->string('customer_name', 50);           //أسم الزبون
+            $table->string('place', 50);           //العنوان
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

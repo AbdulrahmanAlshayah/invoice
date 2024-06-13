@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('status')->default(1);
-            $table->string('user_type'); // حقل نوع المستخدم
+            $table->string('user_type')->default(2); // حقل نوع المستخدم
             $table->string('mobile_number')->nullable(); // رقم الموبايل
             $table->string('place')->nullable(); // العنوان
             $table->timestamps();

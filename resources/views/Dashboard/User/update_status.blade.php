@@ -22,15 +22,6 @@
                             <option value="0">غير مفعل</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="status">نوع المستخدم</label>
-                        <select class="form-control" id="user_type" name="user_type" required>
-                            <option value="" selected disabled>--اختر من القائمة--</option>
-                            <option value="1">ادمن</option>
-                            <option value="2">البائع</option>
-                            <option value="3">الزبون</option>
-                        </select>
-                    </div>
 
                     <input type="hidden" name="id" value="{{ $user->id }}">
                 </div>
